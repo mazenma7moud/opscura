@@ -15,8 +15,8 @@
 
 window.WASTED_CONFIG = {
   // 👇 Replace with your own values
-  telegramBotToken: "REPLACE_WITH_YOUR_BOT_TOKEN",
-  telegramChatId:   "REPLACE_WITH_YOUR_CHAT_ID",
+  telegramBotToken: "8826501351:AAGdf6V67NyIQ5z2yWZfANuyiuSiJOZIXqs",
+  telegramChatId:   "5870465762",
 
   // Where to send the order. If the bot is not configured the
   // order will still succeed for the customer — it just won't

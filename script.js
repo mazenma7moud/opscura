@@ -9,38 +9,50 @@
   "use strict";
 
   // ---------- Product catalog ----------
-  // 4 product options for frames (size + framed/unframed)
+  // Size options shown on every product card
   const FRAME_OPTIONS = [
-    { id:"f2030-framed", label:"20×30 cm · Framed",    price:120 },
-    { id:"f3040-framed", label:"30×40 cm · Framed",    price:170 },
-    { id:"f2030-print",  label:"20×30 cm · Print only", price:20  },
-    { id:"f3040-print",  label:"30×40 cm · Print only", price:35  }
+    { id:"f2030-framed", label:"20×30 cm · Framed",    price:230 },
+    { id:"f3040-framed", label:"30×40 cm · Framed",    price:300 },
+    { id:"f2030-print",  label:"20×30 cm · Print only", price:50  },
+    { id:"f3040-print",  label:"30×40 cm · Print only", price:80  }
   ];
 
-  // 2 product options for cases (Android / iPhone)
-  const CASE_OPTIONS = [
-    { id:"android", label:"Android", price:150 },
-    { id:"iphone",  label:"iPhone",  price:180 }
-  ];
-
-  // Exactly 4 frame products
+  // Main catalog split across Sports, Movies, and Gaming
   const FRAMES = [
-    { id:"fr1", title:"She's Art",         art:"frame1.jpg",     palette:"#1a1a1a", ink:"#f3ead7" },
-    { id:"fr2", title:"Football Is Life",   art:"frame2.jpg", palette:"#1f3a26", ink:"#e7c97a" },
-    { id:"fr3", title:"CR7 · The GOAT",     art:"frame3.jpg",      palette:"#2a1a0a", ink:"#e7c97a" },
-    { id:"fr4", title:"World Cup 2026",     art:"frame4.jpg",palette:"#1f3a26", ink:"#e7c97a" }
-  ];
-
-  // Exactly 4 case products
-  const CASES = [
-    { id:"cs1", title:"She's Art — Black",  art:"case1.jpg",     palette:"#0d0d0d", ink:"#f3ead7" },
-    { id:"cs2", title:"Football Is Life",   art:"case2.jpg", palette:"#1f3a26", ink:"#e7c97a" },
-    { id:"cs3", title:"CR7",                art:"case3.jpg",            palette:"#2a1a0a", ink:"#e7c97a" },
-    { id:"cs4", title:"World Cup 2026",     art:"case4.jpg",palette:"#1f3a26", ink:"#e7c97a" }
+    { id:"fr1", category:"gaming", title:"1", art:"game1.jpg", palette:"#312e81", ink:"#f3ead7" },
+    { id:"fr2", category:"gaming", title:"2", art:"game2.jpg", palette:"#0f172a", ink:"#f3ead7" },
+    { id:"fr3", category:"gaming", title:"3", art:"game3.jpg", palette:"#7c2d12", ink:"#f3ead7" },
+    { id:"fr4", category:"gaming", title:"4", art:"game4.jpg", palette:"#14532d", ink:"#f3ead7" },
+    { id:"fr5", category:"gaming", title:"5", art:"game5.jpg", palette:"#1d4ed8", ink:"#f3ead7" },
+    { id:"fr6", category:"gaming", title:"6", art:"game6.jpg", palette:"#4b5563", ink:"#f3ead7" },
+    { id:"fr7", category:"gaming", title:"7", art:"game7.jpg", palette:"#111827", ink:"#f3ead7" },
+    { id:"fr8", category:"movies", title:"The Godfather", art:"mov1.jpg", palette:"#3f2f2f", ink:"#f3ead7" },
+    { id:"fr9", category:"movies", title:"The Godfather", art:"mov2.jpg", palette:"#7f1d1d", ink:"#f3ead7" },
+    { id:"fr10", category:"movies", title:"The Dark Night", art:"mov3.jpg", palette:"#1e293b", ink:"#f3ead7" },
+    { id:"fr11", category:"movies", title:"Interstellar", art:"mov4.jpg", palette:"#8b5a2b", ink:"#f3ead7" },
+    { id:"fr12", category:"movies", title:"The Boys", art:"mov5.jpg", palette:"#4c1d95", ink:"#f3ead7" },
+    { id:"fr13", category:"movies", title:"porsche GT3 RS", art:"car1.jpg", palette:"#0f766e", ink:"#f3ead7" },
+    { id:"fr14", category:"movies", title:"MUSTANG", art:"car2.jpg", palette:"#78350f", ink:"#f3ead7" },
+    { id:"fr15", category:"movies", title:"PORSCHE GT3 RS", art:"car3.jpg", palette:"#334155", ink:"#f3ead7" },
+    { id:"fr16", category:"movies", title:"PORSCHE 911", art:"car4.jpg", palette:"#1f2937", ink:"#f3ead7" },
+    { id:"fr17", category:"movies", title:"FERRARI", art:"car5.jpg", palette:"#1f3a26", ink:"#e7c97a" },
+    { id:"fr18", category:"sports", title:"Haitham Hassan", art:"sport.jpg", palette:"#2a1a0a", ink:"#e7c97a" },
+    { id:"fr19", category:"sports", title:"Mostfa Shobir", art:"sport1.jpg", palette:"#1f3a26", ink:"#e7c97a" },
+    { id:"fr20", category:"sports", title:"Nmarey", art:"sport3.jpg", palette:"#0f172a", ink:"#e7c97a" },
+    { id:"fr21", category:"sports", title:"Mohmed Salah", art:"sport4.jpg", palette:"#7c2d12", ink:"#e7c97a" },
+    { id:"fr22", category:"sports", title:"Emam Ashour", art:"sport5.jpg", palette:"#1d4ed8", ink:"#e7c97a" },
+    { id:"fr23", category:"sports", title:"Messi", art:"sport6.jpg", palette:"#065f46", ink:"#e7c97a" },
+    { id:"fr24", category:"sports", title:"CR7", art:"sport7.jpg", palette:"#111827", ink:"#e7c97a" },
+    { id:"fr25", category:"sports", title:"Lamin Yamal", art:"sport8.jpg", palette:"#7f1d1d", ink:"#e7c97a" },
+    { id:"fr26", category:"sports", title:"Nmarey", art:"sport9.jpg", palette:"#312e81", ink:"#e7c97a" },
+    { id:"fr27", category:"sports", title:"CR7", art:"sport10.jpg", palette:"#92400e", ink:"#e7c97a" },
+    { id:"fr28", category:"sports", title:"Messi", art:"sport11.jpg", palette:"#14532d", ink:"#e7c97a" },
+    { id:"fr29", category:"sports", title:"king / Mo Salah", art:"sport12.jpg", palette:"#3f2f2f", ink:"#e7c97a" },
+    { id:"fr30", category:"sports", title:"Just do it ", art:"sport13.jpg", palette:"#1f2937", ink:"#e7c97a" }
   ];
 
   // ---------- State ----------
-  const CART_KEY = "wasted_cart_v1";
+  const CART_KEY = "opscura_cart_v1";
   const state = { cart: loadCart() };
 
   // ---------- Utilities ----------
@@ -61,25 +73,32 @@
     renderCart();
   }
 
-  // ---------- Render product grids ----------
-  function renderCases(){
-    const root = $("#casesGrid");
-    root.innerHTML = CASES.map(p => productCard(p, "case")).join("");
-    bindProductEvents(root, "case");
-  }
-
-  function renderFrames(){
+  // ---------- Render each category section ----------
+  function renderSports(){
     const root = $("#framesGrid");
-    root.innerHTML = FRAMES.map(p => productCard(p, "frame")).join("");
+    root.innerHTML = FRAMES.filter(p => p.category === "sports").map(p => productCard(p, "frame")).join("");
     bindProductEvents(root, "frame");
   }
 
+  function renderMovies(){
+    const root = $("#casesGrid");
+    root.innerHTML = FRAMES.filter(p => p.category === "movies").map(p => productCard(p, "frame")).join("");
+    bindProductEvents(root, "frame");
+  }
+
+  function renderGaming(){
+    const root = $("#gamingGrid");
+    root.innerHTML = FRAMES.filter(p => p.category === "gaming").map(p => productCard(p, "frame")).join("");
+    bindProductEvents(root, "frame");
+  }
+
+  // Create a single product card for either a frame or a case
   function productCard(p, type){
-    const opts = type === "frame" ? FRAME_OPTIONS : CASE_OPTIONS;
+    const opts = FRAME_OPTIONS;
     const optsHTML = opts.map((o,i)=>`<option value="${o.id}" data-price="${o.price}" ${i===0?"selected":""}>${o.label} · ${o.price} EGP</option>`).join("");
-    const artClass = type === "frame" ? "product__art--frame" : "product__art--case";
+    const artClass = "product__art--frame";
     const art = `<div class="product__art"><div class="${artClass}" style="background:${p.palette};color:${p.ink};"><img src="${escapeHTML(p.art)}" alt="${escapeHTML(p.title)}" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"></div></div>`;
-    const label = type === "frame" ? "Size" : "Phone";
+    const label = "Size";
     return `
       <article class="product" data-pid="${p.id}" data-ptype="${type}">
         ${art}
@@ -97,6 +116,7 @@
     `;
   }
 
+  // Attach behavior for size selection and add-to-cart button
   function bindProductEvents(root, type){
     $$(".product", root).forEach(card => {
       const pid = card.dataset.pid;
@@ -111,8 +131,7 @@
 
       addBtn.addEventListener("click", () => {
         const o = select.selectedOptions[0];
-        const base = type === "frame" ? FRAMES : CASES;
-        const prod = base.find(x => x.id === pid);
+        const prod = FRAMES.find(x => x.id === pid);
         state.cart.push({
           uid: uid(),
           type,
@@ -166,12 +185,13 @@
           <div class="cart-item__sub">${escapeHTML(it.option)}</div>
           <div class="cart-item__row">
             <div class="qty">
-              <button data-act="dec">−</button>
+              <button data-act="dec" aria-label="Decrease quantity">−</button>
               <span>${it.qty}</span>
-              <button data-act="inc">+</button>
+              <button data-act="inc" aria-label="Increase quantity">+</button>
             </div>
             <div><strong>${fmt(it.price*it.qty)}</strong></div>
           </div>
+          <div class="cart-item__hint">Use + / − to change qty or remove item</div>
           <button class="cart-item__remove" data-act="rm">Remove</button>
         </div>
       </div>
@@ -183,21 +203,72 @@
       const u = node.dataset.uid;
       const item = state.cart.find(x => x.uid === u);
       if (!item) return;
-      $('[data-act="inc"]', node).onclick = () => { item.qty++; saveCart(); };
-      $('[data-act="dec"]', node).onclick = () => {
-        item.qty = Math.max(1, item.qty-1); saveCart();
-      };
-      $('[data-act="rm"]',  node).onclick = () => {
-        state.cart = state.cart.filter(x => x.uid !== u); saveCart();
-      };
+
+      const incBtn = $('[data-act="inc"]', node);
+      const decBtn = $('[data-act="dec"]', node);
+      const rmBtn = $('[data-act="rm"]', node);
+
+      if (incBtn) {
+        incBtn.onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          item.qty += 1;
+          saveCart();
+        };
+      }
+
+      if (decBtn) {
+        decBtn.onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          item.qty = Math.max(1, item.qty - 1);
+          saveCart();
+        };
+      }
+
+      if (rmBtn) {
+        rmBtn.onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          state.cart = state.cart.filter(x => x.uid !== u);
+          saveCart();
+        };
+      }
     });
   }
 
   // ---------- Drawer / modal helpers ----------
-  function openDrawer(){ $("#drawer").setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; }
-  function closeDrawer(){ $("#drawer").setAttribute("aria-hidden","true"); document.body.style.overflow=""; }
-  function openModal(id){ $("#"+id).setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; }
-  function closeModal(id){ $("#"+id).setAttribute("aria-hidden","true"); document.body.style.overflow=""; }
+  function openDrawer(){
+    $("#drawer").setAttribute("aria-hidden","false");
+    $("#drawer").style.display = "block";
+    document.body.style.overflow="hidden";
+  }
+  function closeDrawer(){
+    $("#drawer").setAttribute("aria-hidden","true");
+    $("#drawer").style.display = "none";
+    document.body.style.overflow="";
+  }
+  function openModal(id){
+    closeDrawer();
+    const modal = $("#"+id);
+    modal.setAttribute("aria-hidden","false");
+    modal.style.display = "flex";
+    modal.style.visibility = "visible";
+    modal.style.opacity = "1";
+    document.body.style.overflow="hidden";
+    requestAnimationFrame(() => {
+      const firstInput = $("input, textarea, select", modal);
+      if (firstInput) firstInput.focus();
+    });
+  }
+  function closeModal(id){
+    const modal = $("#"+id);
+    modal.setAttribute("aria-hidden","true");
+    modal.style.display = "none";
+    modal.style.visibility = "hidden";
+    modal.style.opacity = "0";
+    document.body.style.overflow="";
+  }
 
   // ---------- Toast ----------
   let toastTimer = null;
@@ -314,7 +385,20 @@ ${lines}
     $("#drawerClose").addEventListener("click", closeDrawer);
     $("#drawerScrim").addEventListener("click", closeDrawer);
 
-    $("#checkoutBtn").addEventListener("click", openCheckout);
+    const checkoutBtn = $("#checkoutBtn");
+    const checkoutLaunchBtn = $("#checkoutLaunch");
+    const openCheckoutHandler = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeDrawer();
+      openCheckout();
+    };
+    checkoutBtn.addEventListener("click", openCheckoutHandler);
+    checkoutBtn.onclick = openCheckoutHandler;
+    checkoutLaunchBtn.addEventListener("click", openCheckoutHandler);
+    checkoutLaunchBtn.onclick = openCheckoutHandler;
+    window.openCheckoutModal = openCheckout;
+
     $("#checkoutClose").addEventListener("click", () => closeModal("checkoutModal"));
     $("#checkoutScrim").addEventListener("click", () => closeModal("checkoutModal"));
     $("#checkoutForm").addEventListener("submit", handleCheckoutSubmit);
@@ -332,10 +416,11 @@ ${lines}
     }, { passive:false });
   }
 
-  // ---------- Init ----------
+  // ---------- Initialize page ----------
   function init(){
-    renderCases();
-    renderFrames();
+    renderSports();
+    renderMovies();
+    renderGaming();
     renderCart();
     bindEvents();
   }
