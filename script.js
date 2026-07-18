@@ -315,7 +315,9 @@
         title: it.title, option: it.option, qty: it.qty, price: it.price,
         subtotal: it.price * it.qty
       })),
-      total: state.cart.reduce((a,b)=>a+b.price*b.qty, 0),
+      subtotal: state.cart.reduce((a,b)=>a+b.price*b.qty, 0),
+      shipping: Number((document.getElementById("shipping-zone")||{}).value) || 0,
+      total: (state.cart.reduce((a,b)=>a+b.price*b.qty, 0)) + (Number((document.getElementById("shipping-zone")||{}).value) || 0),
       createdAt: new Date().toISOString()
     };
 
@@ -356,6 +358,7 @@
     if (!token || !chat || token.startsWith("REPLACE") || chat.startsWith("REPLACE")){
       console.info("Telegram bot not configured — order kept locally only.");
       return;
+    
     }
 
     const lines = order.items.map(i => `• ${i.title} (${i.option}) × ${i.qty} = ${i.subtotal} EGP`).join("\n");
@@ -369,6 +372,7 @@ ${order.customer.notes ? "📝 " + order.customer.notes + "\n" : ""}
 ──────────────
 ${lines}
 ──────────────
+🚚 Shipping: ${order.shipping} EGP
 💰 TOTAL: ${order.total} EGP
 🕒 ${new Date(order.createdAt).toLocaleString("en-GB")}`;
 
@@ -397,8 +401,10 @@ ${lines}
     };
     checkoutBtn.addEventListener("click", openCheckoutHandler);
     checkoutBtn.onclick = openCheckoutHandler;
-    checkoutLaunchBtn.addEventListener("click", openCheckoutHandler);
-    checkoutLaunchBtn.onclick = openCheckoutHandler;
+    if (checkoutLaunchBtn) {
+      checkoutLaunchBtn.addEventListener("click", openCheckoutHandler);
+      checkoutLaunchBtn.onclick = openCheckoutHandler;
+    }
     window.openCheckoutModal = openCheckout;
 
     $("#checkoutClose").addEventListener("click", () => closeModal("checkoutModal"));
@@ -441,28 +447,24 @@ function updateShippingCost() {
         var itemsHtml = '';
         var itemsSubtotal = 0;
 
-        // قراءة المنتجات الحالية من السلة ديناميكياً
-        if (typeof state !== 'undefined' && state.cart && state.cart.length > 0) {
-            itemsSubtotal = state.cart.reduce(function(sum, item) {
+        // قراءة السلة من localStorage بنفس المفتاح المستخدم في script.js
+        var cart = [];
+        try { cart = JSON.parse(localStorage.getItem('opscura_cart_v1') || '[]'); }
+        catch (e) { cart = []; }
+
+        if (cart.length > 0) {
+            itemsSubtotal = cart.reduce(function(sum, item) {
                 return sum + (item.price * (item.qty || 1));
             }, 0);
 
             // بناء الـ HTML لكل منتج في السلة بنفس الاستايل الأصلي
-            state.cart.forEach(function(item) {
-                itemsHtml += 
+            cart.forEach(function(item) {
+                itemsHtml +=
                     '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.95em; color: #555;">' +
-                        '<span>' + item.name + ' <small style="color:#888;">(' + item.specs + ')</small> × ' + (item.qty || 1) + '</span>' +
+                        '<span>' + item.title + ' <small style="color:#888;">(' + item.option + ')</small> × ' + (item.qty || 1) + '</span>' +
                         '<span>' + (item.price * (item.qty || 1)) + ' EGP</span>' +
                     '</div>';
             });
-        } else {
-            // كود احتياطي لو السلة مش مقروءة بشكل كامل عشان التصميم ما يبوظش
-            itemsSubtotal = 230;
-            itemsHtml = 
-                '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.95em; color: #555;">' +
-                    '<span>Silver Screen Sunset · 20×30 cm · Framed × 1</span>' +
-                    '<span>230 EGP</span>' +
-                '</div>';
         }
         
         // 3. حساب الإجمالي النهائي

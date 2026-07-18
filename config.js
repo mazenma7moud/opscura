@@ -1,5 +1,5 @@
 /* =============================================================
-   Wasted — Telegram bot configuration
+   opscura— Telegram bot configuration
    --------------------------------------------------------------
    To enable order notifications to your Telegram bot:
    1. Open Telegram, talk to @BotFather, send /newbot, follow
